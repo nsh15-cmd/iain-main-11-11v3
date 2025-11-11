@@ -1,5 +1,12 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
+import { Inter } from "next/font/google";
+
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+
+import { Toaster } from "@/components/ui/toaster";
+
+const inter = Inter({ subsets: ["latin"] });
 
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";

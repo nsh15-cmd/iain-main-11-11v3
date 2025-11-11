@@ -9,7 +9,8 @@ import { useRouter } from "next/navigation";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const router = useRouter();
-  const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls();
+  const { endedCalls, upcomingCalls, callRecordings, isLoading } =
+    useGetCalls();
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
   // Fetch recordings when type is "recordings"
@@ -35,9 +36,11 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
 
   // Ensure calls is always an array
   const calls: (Call | CallRecording)[] =
-    type === "ended" ? endedCalls ?? [] :
-    type === "upcoming" ? upcomingCalls ?? [] :
-    recordings ?? [];
+    type === "ended"
+      ? endedCalls ?? []
+      : type === "upcoming"
+      ? upcomingCalls ?? []
+      : recordings ?? [];
 
   const noCallsMessage =
     type === "ended"
@@ -89,7 +92,9 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
               date={date}
               isPreviousMeeting={type === "ended"}
               link={link}
-              buttonIcon1={type === "recordings" ? "/icons/play.svg" : undefined}
+              buttonIcon1={
+                type === "recordings" ? "/icons/play.svg" : undefined
+              }
               buttonText={type === "recordings" ? "Play" : "Start"}
               handleClick={() => router.push(link)} // always a function
             />
